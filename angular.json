@@ -27,7 +27,11 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/sdk/onBoarding.js"
+              "src/assets/sdk/onBoarding.js",
+              "src/assets/angular-components/angularapp.js",
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
             ]
           },
           "configurations": {
@@ -94,7 +98,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/sdk/onBoarding.js"
+              "src/assets/sdk/onBoarding.js",
+              "src/assets/angular-components/angularapp.js"
             ]
           }
         },
@@ -124,6 +129,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "my-app"
 }
