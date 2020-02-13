@@ -8,6 +8,44 @@
   </head>
 
   <body>
-    <front-id-tutorial [incodeInstance]="boardd"></front-id-tutorial>
+    <div [ngSwitch]="step">
+      <front-id-tutorial
+        *ngSwitchCase=0
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+      ></front-id-tutorial>
+      <front-id-camera
+        *ngSwitchCase=1
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+      ></front-id-camera>
+      <back-id-tutorial
+        *ngSwitchCase=2
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+      ></back-id-tutorial>
+      <back-id-camera
+        *ngSwitchCase=3
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+        [handleError]="skipNextStep"
+      ></back-id-camera>
+      <document-camera
+        *ngSwitchCase=4
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+        [handleError]="nextStep"
+      ></document-camera>
+      <selfie-tutorial
+        *ngSwitchCase=5
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+      ></selfie-tutorial>
+      <selfie-camera
+        *ngSwitchCase=6
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+      ></selfie-camera>
+    </div>
   </body>
 </html>

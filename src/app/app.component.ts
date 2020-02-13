@@ -11,70 +11,28 @@ declare var OnBoarding: any;
 export class AppComponent implements OnInit {
   apiKey = 'f35844c8bcb417be1a64fd6e8d622cc93b0fcfaa';
   apiURL = 'https://stage-api.incodesmile.com';
-  title = 'my-app';
-  boardd;
+  step = 0;
+  sdk;
   token;
-  container;
-
-  createSession() {
-    console.log(this.boardd);
-    console.log(this.apiURL);
-    return this.boardd.createSession('MX');
-  }
 
   ngOnInit() {
-    console.log(this.title);
-
-    this.token = 'asdada';
-
-    this.boardd = OnBoarding.create({
+    this.sdk = OnBoarding.create({
       apiKey: this.apiKey,
       apiURL: this.apiURL,
     });
 
-    this.container = document.getElementById('camera-container');
+    console.log(this.sdk);
 
     this.createSession().then(mytoken => {
-      console.log(mytoken);
       this.token = mytoken;
-    }).catch(err => console.log(err));
+    });
 
     function log(r) {
       alert(JSON.stringify(r));
     }
 
-    function showError() {
-      alert('Some error');
-    }
-
-    function renderTutorialFront() {
-      this.boardd.renderFrontTutorial(this.container, {
-        onSuccess: () => {
-          renderFrontIDCamera();
-        },
-      });
-    }
-
-    function renderFrontIDCamera() {
-      this.boardd.renderCamera('front', this.container, {
-        onSuccess: r => {
-          log(r);
-          renderBackIDCamera(this.token.token);
-        },
-        onError: showError,
-      });
-    }
-
-    function renderTutorialBack() {
-      this.boardd.renderBackTutorial(this.container, {
-        onSuccess: () => {
-          renderBackIDCamera(this.token.token);
-        },
-      });
-    }
-
     function renderBackIDCamera(token: any) {
-      this.boardd.renderCamera('back', this.container, {
+      this.sdk.renderCamera('back', this.container, {
         onSuccess: r => {
           renderSelfieCamera(token);
         },
@@ -83,7 +41,7 @@ export class AppComponent implements OnInit {
     }
 
     function renderTutorialSelfie() {
-      this.boardd.renderSelfieTutorial(this.container, {
+      this.sdk.renderSelfieTutorial(this.container, {
         onSuccess: () => {
           renderSelfieCamera(this.token.token);
         },
@@ -91,7 +49,7 @@ export class AppComponent implements OnInit {
     }
 
     function renderSelfieCamera(token: any) {
-      this.boardd.renderCamera('selfie', this.container, {
+      this.sdk.renderCamera('selfie', this.container, {
         onSuccess: r => {
           viewOCRDates(token);
         },
@@ -100,7 +58,7 @@ export class AppComponent implements OnInit {
     }
 
     function renderConference(token: any) {
-      this.boardd.renderConference(
+      this.sdk.renderConference(
         this.container,
         {
           token,
@@ -112,16 +70,16 @@ export class AppComponent implements OnInit {
     }
 
     function addToQueue() {
-      this.boardd.addToQueue({
+      this.sdk.addToQueue({
         token: this.token.token,
       });
     }
 
     function viewOCRDates(token: any) {
-      this.boardd
+      this.sdk
         .processId()
         .then(() =>
-        this.boardd.ocrData({
+        this.sdk.ocrData({
             token: token.token,
           }),
         )
@@ -130,7 +88,7 @@ export class AppComponent implements OnInit {
             // alert(ocrData.name + ' Espera a un ejecutivo disponible');
             // this.ocrData = ocrData;
             log(ocrData);
-            const score = await this.boardd
+            const score = await this.sdk
               .getScore({
                 interviewId: token.interviewId,
                 token: token.token,
@@ -146,5 +104,19 @@ export class AppComponent implements OnInit {
           }
         });
     }
+  }
+
+  createSession() {
+    return this.sdk.createSession('MX');
+  }
+
+  nextStep = () => {
+    console.log('Success!');
+    this.step++;
+  }
+
+  skipNextStep = () => {
+    console.log('Success!');
+    this.step = this.step + 2;
   }
 }
