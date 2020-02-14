@@ -48,10 +48,6 @@ export class AppComponent implements OnInit {
       this.sdk.ocrData({
         token: this.token.token,
       })
-      
-      this.sdk.addToQueue({
-        token: this.token.token,
-      })
     }
 
     this.step++;
