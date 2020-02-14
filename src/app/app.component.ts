@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 declare var OnBoarding: any;
 
@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   step = 0;
   sdk;
   token;
+
+  constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.sdk = OnBoarding.create({
@@ -51,10 +53,12 @@ export class AppComponent implements OnInit {
     }
 
     this.step++;
+    this.ref.detectChanges();
   }
 
   skipNextStep = () => {
     console.log('Success!');
     this.step = this.step + 2;
+    this.ref.detectChanges();
   }
 }
