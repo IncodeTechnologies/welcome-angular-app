@@ -26,41 +26,6 @@ export class AppComponent implements OnInit {
     this.createSession().then(mytoken => {
       this.token = mytoken;
     });
-
-    function log(r) {
-      alert(JSON.stringify(r));
-    }
-
-
-    function viewOCRDates(token: any) {
-      this.sdk
-        .processId()
-        .then(() =>
-        this.sdk.ocrData({
-            token: token.token,
-          }),
-        )
-        .then(async ocrData => {
-          try {
-            // alert(ocrData.name + ' Espera a un ejecutivo disponible');
-            // this.ocrData = ocrData;
-            log(ocrData);
-            const score = await this.sdk
-              .getScore({
-                interviewId: token.interviewId,
-                token: token.token,
-              })
-              .then(score => {
-                //do something with the score
-                console.log(score);
-              });
-            log(score);
-            //renderConference(token);
-          } catch (e) {
-            log(e);
-          }
-        });
-    }
   }
 
   createSession() {
