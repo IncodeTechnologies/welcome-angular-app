@@ -31,49 +31,6 @@ export class AppComponent implements OnInit {
       alert(JSON.stringify(r));
     }
 
-    function renderBackIDCamera(token: any) {
-      this.sdk.renderCamera('back', this.container, {
-        onSuccess: r => {
-          renderSelfieCamera(token);
-        },
-        onError: () => renderSelfieCamera(token),
-      });
-    }
-
-    function renderTutorialSelfie() {
-      this.sdk.renderSelfieTutorial(this.container, {
-        onSuccess: () => {
-          renderSelfieCamera(this.token.token);
-        },
-      });
-    }
-
-    function renderSelfieCamera(token: any) {
-      this.sdk.renderCamera('selfie', this.container, {
-        onSuccess: r => {
-          viewOCRDates(token);
-        },
-        onError: () => viewOCRDates(token),
-      });
-    }
-
-    function renderConference(token: any) {
-      this.sdk.renderConference(
-        this.container,
-        {
-          token,
-        },
-        {
-          onSuccess: status => console.log(status),
-        },
-      );
-    }
-
-    function addToQueue() {
-      this.sdk.addToQueue({
-        token: this.token.token,
-      });
-    }
 
     function viewOCRDates(token: any) {
       this.sdk
@@ -98,7 +55,7 @@ export class AppComponent implements OnInit {
                 console.log(score);
               });
             log(score);
-            renderConference(token);
+            //renderConference(token);
           } catch (e) {
             log(e);
           }
@@ -112,6 +69,24 @@ export class AppComponent implements OnInit {
 
   nextStep = () => {
     console.log('Success!');
+
+    if (this.step === 4) {
+      this.sdk.processId({
+        token: this.token.token,
+        queueName: ''
+      })
+    }
+
+    if (this.step === 6) {
+      this.sdk.ocrData({
+        token: this.token.token,
+      })
+      
+      this.sdk.addToQueue({
+        token: this.token.token,
+      })
+    }
+
     this.step++;
   }
 

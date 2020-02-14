@@ -46,6 +46,12 @@
         [sdk]="sdk"
         [handleSuccess]="nextStep"
       ></selfie-camera>
+      <conference-camera
+        *ngSwitchCase=7
+        [sdk]="sdk"
+        [handleSuccess]="nextStep"
+        [token]="token.token"
+      ></conference-camera>
     </div>
   </body>
 </html>
