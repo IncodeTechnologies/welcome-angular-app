@@ -69,8 +69,10 @@ export class AppComponent implements OnInit {
 
   nextStep = () => {
     console.log('Success!');
+    console.log(this.token);
 
     if (this.step === 4) {
+      console.log('Here')
       this.sdk.processId({
         token: this.token.token,
         queueName: ''
