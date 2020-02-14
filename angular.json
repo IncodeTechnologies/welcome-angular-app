@@ -28,7 +28,7 @@
             ],
             "scripts": [
               "src/assets/sdk/onBoarding.js",
-              "src/assets/angular-components/angularapp.js",
+              "src/assets/angular-components/angular-elements.js",
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
               }
@@ -99,7 +99,7 @@
             ],
             "scripts": [
               "src/assets/sdk/onBoarding.js",
-              "src/assets/angular-components/angularapp.js"
+              "src/assets/angular-components/angular-elements.js"
             ]
           }
         },
