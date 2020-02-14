@@ -23,8 +23,6 @@ export class AppComponent implements OnInit {
       apiURL: this.apiURL,
     });
 
-    console.log(this.sdk);
-
     this.createSession().then(mytoken => {
       this.token = mytoken;
     });
