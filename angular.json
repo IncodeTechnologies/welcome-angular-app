@@ -29,7 +29,6 @@
             "scripts": [
               "src/assets/sdk/onBoarding.js",
               "src/assets/angular-components/angularapp.js",
-              "https://static.opentok.com/v2/js/opentok.min.js",
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
               }
@@ -100,8 +99,7 @@
             ],
             "scripts": [
               "src/assets/sdk/onBoarding.js",
-              "src/assets/angular-components/angularapp.js",
-              "https://static.opentok.com/v2/js/opentok.min.js"
+              "src/assets/angular-components/angularapp.js"
             ]
           }
         },
