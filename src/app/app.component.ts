@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     this.sdk = OnBoarding.create({
       apiKey: this.apiKey,
       apiURL: this.apiURL,
+      lang: 'es'
     });
 
     this.createSession().then(mytoken => {
@@ -56,5 +57,15 @@ export class AppComponent implements OnInit {
     console.log('Success!');
     this.step = this.step + 2;
     this.ref.detectChanges();
+  }
+
+  handleLog = (ev) => {
+    console.log(ev);
+
+    const eventType = ev.detail.type;
+    
+    if (eventType === 'successCapture') {
+      this.nextStep();
+    }
   }
 }
