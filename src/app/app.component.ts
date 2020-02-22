@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   step = 0;
   sdk;
   token;
+  permissionMessage = 'Custom text';
+  backgroundColor = 'blue';
 
   constructor(private ref: ChangeDetectorRef) {}
 

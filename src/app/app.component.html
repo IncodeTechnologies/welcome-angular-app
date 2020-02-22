@@ -19,6 +19,8 @@
         *ngSwitchCase=1
         [sdk]="sdk"
         [numberOfTries]=2
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
         (logger)="handleLog($event)"
       ></front-id-camera>
       <back-id-tutorial
