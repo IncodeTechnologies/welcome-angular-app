@@ -884,6 +884,12 @@ p {
   flex-grow: 1;
   border: 0;
   box-shadow: 0;
+  height: 60vw;
+}
+@media only screen and (max-height: 480px) {
+  .tutorial video {
+    height: 25vw;
+  }
 }
 
 .tutorial .button-hidden {

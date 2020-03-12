@@ -37,8 +37,7 @@
       <document-camera
         *ngSwitchCase=4
         [sdk]="sdk"
-        [handleSuccess]="nextStep"
-        [handleError]="nextStep"
+        (logger)="handleLog($event)"
       ></document-camera>
       <selfie-tutorial
         *ngSwitchCase=5
@@ -48,8 +47,10 @@
       <selfie-camera
         *ngSwitchCase=6
         [sdk]="sdk"
-        [handleSuccess]="nextStep"
         [numberOfTries]=2
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
+        (logger)="handleLog($event)"
       ></selfie-camera>
       <conference-camera
         *ngSwitchCase=7
