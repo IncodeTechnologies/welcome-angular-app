@@ -13,7 +13,6 @@
         *ngSwitchCase=0
         [sdk]="sdk"
         [handleSuccess]="nextStep"
-        [handleError]="nextStep"
       ></front-id-tutorial>
       <front-id-camera
         *ngSwitchCase=1
@@ -31,12 +30,16 @@
       <back-id-camera
         *ngSwitchCase=3
         [sdk]="sdk"
-        (logger)="handleLog($event)"
         [numberOfTries]=2
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
+        (logger)="handleLog($event)"
       ></back-id-camera>
       <document-camera
         *ngSwitchCase=4
         [sdk]="sdk"
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
         (logger)="handleLog($event)"
       ></document-camera>
       <selfie-tutorial
@@ -47,17 +50,11 @@
       <selfie-camera
         *ngSwitchCase=6
         [sdk]="sdk"
-        [numberOfTries]=2
+        [timeout]=5000
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
         (logger)="handleLog($event)"
       ></selfie-camera>
-      <conference-camera
-        *ngSwitchCase=7
-        [sdk]="sdk"
-        [handleSuccess]="nextStep"
-        [token]="token"
-      ></conference-camera>
     </div>
   </body>
 </html>
