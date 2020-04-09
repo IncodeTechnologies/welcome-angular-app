@@ -38,19 +38,6 @@ export class AppComponent implements OnInit {
   nextStep = () => {
     console.log('Success!');
 
-    if (this.step === 4) {
-      this.sdk.processId({
-        token: this.token.token,
-        queueName: ''
-      })
-    }
-
-    if (this.step === 6) {
-      this.sdk.ocrData({
-        token: this.token.token,
-      })
-    }
-
     this.step++;
     this.ref.detectChanges();
   }
