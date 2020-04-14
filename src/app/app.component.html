@@ -50,11 +50,19 @@
       <selfie-camera
         *ngSwitchCase=6
         [sdk]="sdk"
-        [timeout]=5000
+        [timeout]=30000
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
         (logger)="handleLog($event)"
       ></selfie-camera>
+      <conference-camera
+        *ngSwitchCase=7
+        [sdk]="sdk"
+        [token]="token"
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
+        (logger)="handleLog($event)">
+      </conference-camera>
     </div>
   </body>
 </html>

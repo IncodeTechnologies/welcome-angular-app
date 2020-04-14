@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
 
     const eventType = ev.detail.type;
     
-    if (eventType === 'successCapture') {
+    if (eventType === 'successCapture' || eventType === 'success') {
       this.nextStep();
     }
   }
