@@ -1,16 +1,15 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 
 declare var OnBoarding: any;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-
 export class AppComponent implements OnInit {
-  apiKey = 'f35844c8bcb417be1a64fd6e8d622cc93b0fcfaa';
-  apiURL = 'https://stage-api.incodesmile.com';
+  apiKey = '34c6fceca75e456f25e7e99531e2425c6c1de443';
+  apiURL = 'https://dev-api-citibanamex.incodesmile.mx';
   step = 0;
   sdk;
   token;
@@ -19,42 +18,53 @@ export class AppComponent implements OnInit {
 
   constructor(private ref: ChangeDetectorRef) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.sdk = OnBoarding.create({
       apiKey: this.apiKey,
       apiURL: this.apiURL,
-      lang: 'es'
+      encrypt: true,
     });
 
-    this.createSession().then(mytoken => {
-      this.token = mytoken;
-    });
+    this.token = await this.createSession().then((mytoken) => mytoken);
+
+    this.sdk.publishKeys(this.token.token);
   }
 
   createSession() {
-    return this.sdk.createSession('MX');
+    return fetch("https://dev-api-citibanamex.incodesmile.mx/omni/test/start", {
+      method: "POST",
+      body: JSON.stringify({ countryCode: "MX" }),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "api-version": "1.0",
+        "x-api-key": this.apiKey,
+      },
+    })
+      .then((res) => res.json().then((res) => res))
+      .catch((error) => console.error("Error:", error));
   }
 
   nextStep = () => {
-    console.log('Success!');
+    console.log("Success!");
 
     this.step++;
     this.ref.detectChanges();
-  }
+  };
 
   skipNextStep = () => {
-    console.log('Success!');
+    console.log("Success!");
     this.step = this.step + 2;
     this.ref.detectChanges();
-  }
+  };
 
   handleLog = (ev) => {
     console.log(ev);
 
     const eventType = ev.detail.type;
-    
+
     if (eventType === 'successCapture') {
       this.nextStep();
     }
-  }
+  };
 }
