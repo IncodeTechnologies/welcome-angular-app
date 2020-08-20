@@ -3,18 +3,18 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 declare var OnBoarding: any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  apiKey = '34c6fceca75e456f25e7e99531e2425c6c1de443';
-  apiURL = 'https://dev-api-citibanamex.incodesmile.mx';
+  apiKey = "34c6fceca75e456f25e7e99531e2425c6c1de443";
+  apiURL = "https://dev-api-citibanamex.incodesmile.mx";
   step = 0;
   sdk;
   token;
-  permissionMessage = 'Custom text';
-  backgroundColor = 'blue';
+  permissionMessage = "Custom text";
+  backgroundColor = "blue";
 
   constructor(private ref: ChangeDetectorRef) {}
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     this.token = await this.createSession().then((mytoken) => mytoken);
 
-    this.sdk.publishKeys(this.token.token);
+    await this.sdk.publishKeys(this.token.token);
   }
 
   createSession() {
@@ -48,12 +48,23 @@ export class AppComponent implements OnInit {
   nextStep = () => {
     console.log("Success!");
 
+    if (this.step === 4) {
+      console.log("process id");
+
+      this.sdk
+        .processId({
+          token: this.token.token,
+        })
+        .then((data) => console.log(data));
+    }
+
     this.step++;
     this.ref.detectChanges();
   };
 
   skipNextStep = () => {
     console.log("Success!");
+
     this.step = this.step + 2;
     this.ref.detectChanges();
   };
@@ -62,8 +73,8 @@ export class AppComponent implements OnInit {
     console.log(ev);
 
     const eventType = ev.detail.type;
-    
-    if (eventType === 'successCapture') {
+
+    if (eventType === "successCapture") {
       this.nextStep();
     }
   };
