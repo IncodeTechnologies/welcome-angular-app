@@ -9,7 +9,7 @@ declare var OnBoarding: any;
 })
 export class AppComponent implements OnInit {
   apiKey = "34c6fceca75e456f25e7e99531e2425c6c1de443";
-  apiURL = "https://dev-api-citibanamex.incodesmile.mx";
+  apiURL = "https://frontend-dev-api-citibanamex.incodesmile.mx";
   step = 0;
   sdk;
   token;
