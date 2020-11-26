@@ -37,13 +37,23 @@
         [permissionBackgroundColor]="backgroundColor"
         (logger)="handleLog($event)"
       ></back-id-camera>
-      <selfie-tutorial
+      <document-camera
         *ngSwitchCase=4
+        [sdk]="sdk"
+        [token]="token"
+        [numberOfTries]=2
+        [permissionMessage]="permissionMessage"
+        [permissionBackgroundColor]="backgroundColor"
+        [nativeCamera]=false
+        (logger)="handleLog($event)"
+      ></document-camera>
+      <selfie-tutorial
+        *ngSwitchCase=5
         [sdk]="sdk"
         [handleSuccess]="nextStep"
       ></selfie-tutorial>
       <selfie-camera
-        *ngSwitchCase=5
+        *ngSwitchCase=6
         [sdk]="sdk"
         [token]="token"
         [timeout]=40000
@@ -53,7 +63,7 @@
         (logger)="handleLog($event)"
       ></selfie-camera>
       <conference-camera
-        *ngSwitchCase=6
+        *ngSwitchCase=7
         [sdk]="sdk"
         [token]="token"
         [permissionMessage]="permissionMessage"
