@@ -45,6 +45,8 @@
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
         [nativeCamera]=false
+        [timeout]=1000
+        [hideRetake]=true
         (logger)="handleLog($event)"
       ></document-camera>
       <selfie-tutorial
