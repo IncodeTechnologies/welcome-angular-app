@@ -4,31 +4,30 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  position: fixed;
 }
-​
+
 * {
   box-sizing: border-box;
   outline: 0 !important;
 }
-​
+
 .hidden {
   display: none;
 }
-​
+
 .support {
   text-align: center;
   height: 100%;
 }
-​
+
 .support .publisher {
   height: 100%;
 }
-​
+
 .support * {
   box-sizing: border-box;
 }
-​
+
 .support .circle {
   background-repeat: no-repeat;
   background-color: rgba(255, 255, 255, 0.1);
@@ -39,16 +38,16 @@ body {
   padding: 2em;
   width: 15em;
 }
-​
+
 .support .circle.error {
   background-color: rgba(0, 0, 0, 0.6);
 }
-​
+
 .support .circle.error h1,
 .support .circle.error h2 {
   color: #f94c6a;
 }
-​
+
 .support h1 {
   font-size: 34px;
   font-weight: normal;
@@ -56,14 +55,14 @@ body {
   letter-spacing: -1px;
   text-align: center;
 }
-​
+
 .support h2 {
   font-size: 20px;
   font-weight: normal;
   line-height: 1.65;
   text-align: center;
 }
-​
+
 .support header {
   position: relative;
   padding: 15px 0;
@@ -72,45 +71,45 @@ body {
   height: 90px;
   align-items: center;
 }
-​
+
 .support header .center {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-​
+
 .support header h1 {
   font-size: 22px;
   margin: 0;
 }
-​
+
 .support header small {
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
 }
-​
+
 .support header .mute {
   background-color: #3cb0f7;
 }
-​
+
 .support header .mute.muted {
   opacity: 0.5;
 }
-​
+
 .support header .mute img {
   height: 20px;
   width: auto;
 }
-​
+
 .support header .hang {
   background-color: #ff637b;
 }
-​
+
 .support header .hang img {
   height: auto;
   width: 20px;
 }
-​
+
 .support header button {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
@@ -119,35 +118,35 @@ body {
   padding: 0;
   border: 0;
 }
-​
+
 .support .OT_publisher .OT_archiving {
   display: none;
 }
-​
+
 .subscriber {
   height: calc(100% - 90px);
 }
-​
+
 .subscriber div {
   height: 100%;
 }
-​
+
 .subscriber .OTSubscriberContainer {
   height: 100% !important;
   width: auto !important;
 }
-​
+
 .subscriber .message {
   position: relative;
   width: 100%;
   margin: 0 auto;
 }
-​
+
 .subscriber .infoMessage {
   color: #034c7c;
   position: relative;
 }
-​
+
 .subscriber .generic-code {
   object-fit: contain;
   opacity: 0.72;
@@ -156,13 +155,13 @@ body {
   width: 100%;
   top: 77px;
 }
-​
+
 .subscriber .generic-code .genericMessage {
   position: relative;
   margin: 5px;
   padding: 0 20px;
 }
-​
+
 .subscriber .info-code {
   position: absolute;
   z-index: 999;
@@ -173,25 +172,25 @@ body {
   height: 40px;
   transition: height 0.5s;
 }
-​
+
 .subscriber .info-code p {
   font-size: 18px;
   font-weight: normal;
   text-align: center;
   margin: 5px;
 }
-​
+
 .float-button {
   position: absolute;
   bottom: 30px;
   right: 10px;
   z-index: 9999;
 }
-​
+
 .float-button .button-inside {
   position: relative;
 }
-​
+
 .float-button .button-inside .indicator {
   background-color: #ff5c6f;
   border-radius: 50%;
@@ -203,7 +202,7 @@ body {
   top: -13px;
   width: 31px;
 }
-​
+
 .chatScreenBack {
   background-color: rgba(0, 0, 0, 0.31);
   bottom: 0;
@@ -214,7 +213,7 @@ body {
   top: 0;
   z-index: 999;
 }
-​
+
 .chatScreen {
   background-color: white;
   bottom: 0;
@@ -227,20 +226,20 @@ body {
   top: 90px;
   z-index: 9999;
 }
-​
+
 .chatScreen .messages {
   flex-grow: 1;
   overflow: auto;
   position: relative;
 }
-​
+
 .chatScreen .messages .messages-inner {
   max-height: 100%;
   width: 100%;
   position: absolute;
   bottom: 0;
 }
-​
+
 .chatScreen .message-container {
   align-items: center;
   align-self: flex-end;
@@ -248,70 +247,70 @@ body {
   margin-bottom: 15px;
   text-align: left;
 }
-​
+
 .chatScreen .message-container .message {
   border-radius: 7px;
   padding: 20px;
   max-width: 75%;
 }
-​
+
 .chatScreen .message-container span.date {
   font-size: 11px;
   color: #21273b;
   width: 45px;
 }
-​
+
 .chatScreen .message-container .avatar {
   border-radius: 50%;
   height: 43px;
   width: 43px;
 }
-​
+
 .chatScreen .message-container .avatar img {
   height: 43px;
   width: 43px;
 }
-​
+
 .chatScreen .message-container.mine {
   flex-direction: row-reverse;
   align-self: flex-end;
 }
-​
+
 .chatScreen .message-container.mine span.date {
   margin-left: 10px;
   margin-right: 10px;
 }
-​
+
 .chatScreen .message-container.mine .avatar {
   margin-left: 10px;
   margin-right: 10px;
 }
-​
+
 .chatScreen .message-container.mine .message {
   background-color: #21273b;
   color: #fff;
 }
-​
+
 .chatScreen .message-container.from-other {
   flex-direction: row;
   align-self: flex-start;
 }
-​
+
 .chatScreen .message-container.from-other span.date {
   margin-left: 10px;
   margin-right: 10px;
 }
-​
+
 .chatScreen .message-container.from-other .avatar {
   margin-left: 10px;
   margin-right: 10px;
 }
-​
+
 .chatScreen .message-container.from-other .message {
   background-color: rgba(216, 216, 216, 0.6);
   color: #21273b;
 }
-​
+
 .chatScreen .chat-header {
   display: flex;
   justify-content: flex-end;
@@ -321,23 +320,23 @@ body {
   align-self: center;
   width: 90%;
 }
-​
+
 .chatScreen .message-form {
   height: 60px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
 }
-​
+
 .chatScreen .message-form button {
   font-size: 16px;
   font-weight: bold;
   color: #21273b;
 }
-​
+
 .chatScreen .message-form button:disabled {
   color: rgba(0, 0, 0, 0.3);
 }
-​
+
 .chatScreen .message-form input {
   height: 100%;
   width: 100%;
@@ -346,18 +345,18 @@ body {
   color: #1c1f28;
   border: none;
 }
-​
+
 .chatScreen .message-form input::placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
-​
+
 .connecting {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
 }
-​
+
 .notice {
   position: fixed;
   bottom: 10%;
@@ -366,11 +365,11 @@ body {
   transform: translateX(-50%);
   width: 100%;
 }
-​
+
 .connecting .OTPublisherContainer {
   display: none !important;
 }
-​
+
 .OTPublisherContainer {
   border-radius: 30px !important;
   border: 5px solid #fff !important;
@@ -381,7 +380,7 @@ body {
   width: 160px !important;
   height: 160px !important;
 }
-​
+
 button.restart {
   background-color: #3db0f7;
   border-radius: 31px;
@@ -390,7 +389,7 @@ button.restart {
   padding: 20px;
   max-width: 260px;
 }
-​
+
 .card-wrapper {
   display: flex;
   flex-direction: column;
@@ -399,27 +398,27 @@ button.restart {
   align-items: center;
   height: 100%;
 }
-​
+
 @-webkit-keyframes spinX {
   0% {
     -webkit-transform: rotateX(0deg);
   }
-​
+
   100% {
     -webkit-transform: rotateX(359deg);
   }
 }
-​
+
 @keyframes spinX {
   0% {
     transform: rotateX(0deg);
   }
-​
+
   100% {
     transform: rotateX(359deg);
   }
 }
-​
+
 .loading-circle {
   height: 100%;
   top: 0;
@@ -427,13 +426,13 @@ button.restart {
   justify-content: center;
   align-items: center;
 }
-​
+
 @keyframes spinner {
   to {
     transform: rotate(360deg);
   }
 }
-​
+
 .loading-circle .spinner-inner {
   width: 250px;
   height: 250px;
@@ -447,27 +446,31 @@ button.restart {
   justify-content: center;
   margin: 0 auto;
 }
-​
+
 .loading-circle .spinner-inner img {
   position: absolute;
   animation: spinner 0.6s linear infinite;
 }
-​
+
 .loading-circle h2 {
   font-size: 36px;
 }
-​
+
 .loading-circle p {
   font-size: 20px;
   margin: 0 10px;
 }
-​
+
 #root {
   height: calc(var(--vh) * 100);
   width: calc(var(--vw) * 100);
   min-height: 500px;
 }
-​
+
+.hidden {
+  display: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:active,
@@ -477,22 +480,25 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1000px #fff inset !important;
   -webkit-text-fill-color: #555555 !important;
 }
-​
+
 a {
   color: #949ea8;
   cursor: pointer;
   text-decoration: none;
 }
-​
+
 p {
   font-size: 16px;
   line-height: 1.33;
 }
-​
+
 .uppercase {
   text-transform: uppercase;
 }
-​
+.hidden {
+  display: none;
+}
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);
@@ -509,7 +515,7 @@ section.otp {
   align-items: center;
   color: #21273b;
 }
-​
+
 .otp__content {
   width: 90%;
   height: 95%;
@@ -519,11 +525,11 @@ section.otp {
   text-align: center;
   padding-top: 50px;
 }
-​
+
 section.otp label {
   font-size: 16px;
 }
-​
+
 section.otp p.code {
   font-size: 39px;
   font-weight: bold;
@@ -531,7 +537,7 @@ section.otp p.code {
   letter-spacing: 15px;
   margin-top: 15px;
 }
-​
+
 section.otp button {
   width: 215px;
   height: 62px;
@@ -543,19 +549,19 @@ section.otp button {
   color: #fff;
   margin-top: 60px;
 }
-​
+
 section.otp button:disabled {
   opacity: 0.5;
   box-shadow: 0 6px 10px 0 rgba(18, 21, 28, 0.4);
   background-color: #757575;
 }
-​
+
 section.otp span.error {
   font-size: 14px;
   color: #f54f68;
   display: block;
 }
-​
+
 .is-rotated {
   display: flex;
   flex-direction: column;
@@ -575,7 +581,7 @@ section.otp span.error {
   height: calc(var(--vh) * 100);
   width: calc(var(--vw) * 100);
 }
-​
+
 .is-rotated p {
   display: block;
   margin-block-start: 0;

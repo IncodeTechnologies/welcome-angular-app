@@ -11,6 +11,7 @@ declare var OnBoarding: any;
 export class AppComponent implements OnInit {
   apiKey = "34c6fceca75e456f25e7e99531e2425c6c1de443";
   apiURL = "https://frontend-dev-api-citibanamex.incodesmile.mx";
+  tokboxAPI = "46501002";
   step = 0;
   sdk;
   token;
@@ -20,6 +21,12 @@ export class AppComponent implements OnInit {
   ip;
   deviceType = "WEBAPP";
   fingerPrint;
+  
+  theme = {
+    main: '#3db0f7',
+    buttonBorderRadius: '0px',
+    buttonColor: '#fff',
+  };
 
   constructor(private ref: ChangeDetectorRef) {}
 
@@ -28,6 +35,8 @@ export class AppComponent implements OnInit {
       apiKey: this.apiKey,
       apiURL: this.apiURL,
       encrypt: true,
+      theme: this.theme,
+      tokboxAPI: this.tokboxAPI
     });
 
     this.token = await this.createSession().then((mytoken) => mytoken);
