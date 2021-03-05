@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
+//import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
 
 declare var OnBoarding: any;
 
@@ -11,7 +11,7 @@ declare var OnBoarding: any;
 export class AppComponent implements OnInit {
   apiKey = "34c6fceca75e456f25e7e99531e2425c6c1de443";
   apiURL = "https://frontend-dev-api-citibanamex.incodesmile.mx";
-  tokboxAPI = "46501002";
+  tokboxApiKey = "46501002";
   step = 0;
   sdk;
   token;
@@ -21,27 +21,47 @@ export class AppComponent implements OnInit {
   ip;
   deviceType = "WEBAPP";
   fingerPrint;
-  
+
   theme = {
-    main: '#3db0f7',
-    buttonBorderRadius: '0px',
-    buttonColor: '#fff',
+    mainButton: {
+      backgroundColor: "#006DB2",
+      color: "#FFF",
+      borderRadius: "5px",
+      fontFamily: "Arial",
+    },
+    secondaryButton: {
+      backgroundColor: "transparent",
+      color: "#006DB2",
+      borderRadius: "5px",
+      fontFamily: "Arial",
+      border: "1px solid #006DB2",
+      padding: "18px 25px",
+      width: "100%",
+    },
+    modal: {
+      borderRadius: "5px",
+    },
   };
 
   constructor(private ref: ChangeDetectorRef) {}
 
   async ngOnInit() {
-    this.sdk = OnBoarding.create({
+    this.sdk = await OnBoarding.create({
       apiKey: this.apiKey,
       apiURL: this.apiURL,
       encrypt: true,
       theme: this.theme,
-      tokboxAPI: this.tokboxAPI
+      tokboxApiKey: this.tokboxApiKey,
     });
-
-    this.token = await this.createSession().then((mytoken) => mytoken);
-
+    await this.sdk.warmup();
+    const _token = await this.createSession().then((token) => token);
+    this.token = _token;
     await this.sdk.publishKeys(this.token.token);
+
+    await this.sdk.mock({
+      token: this.token.token,
+      interviewId: "602ffb95b3a8a3001204eb54",
+    });
 
     this.ip = await fetch("https://api.ipify.org").then((response) =>
       response.text()
@@ -81,8 +101,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  createSession() {
-    return fetch(
+  async createSession() {
+    return await fetch(
       "https://frontend-dev-api-citibanamex.incodesmile.mx/omni/test/start",
       {
         method: "POST",

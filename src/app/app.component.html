@@ -12,6 +12,7 @@
       <front-id-tutorial
         *ngSwitchCase=0
         [sdk]="sdk"
+        [token]="token"
         [handleSuccess]="nextStep"
       ></front-id-tutorial>
       <front-id-camera
@@ -70,6 +71,7 @@
         [token]="token"
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
+        [showLegalModal]=true
         (logger)="handleLog($event)">
       </conference-camera>
     </div>
