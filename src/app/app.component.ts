@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-//import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
+import FingerprintJS from "@fingerprintjs/fingerprintjs-pro";
 
 declare var OnBoarding: any;
 
@@ -56,12 +56,13 @@ export class AppComponent implements OnInit {
     await this.sdk.warmup();
     const _token = await this.createSession().then((token) => token);
     this.token = _token;
+
     await this.sdk.publishKeys(this.token.token);
 
-    await this.sdk.mock({
+    /*await this.sdk.mock({
       token: this.token.token,
       interviewId: "602ffb95b3a8a3001204eb54",
-    });
+    });*/
 
     this.ip = await fetch("https://api.ipify.org").then((response) =>
       response.text()
