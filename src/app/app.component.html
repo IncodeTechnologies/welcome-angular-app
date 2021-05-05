@@ -27,6 +27,7 @@
       <back-id-tutorial
         *ngSwitchCase=2
         [sdk]="sdk"
+        [token]="token"
         [handleSuccess]="nextStep"
       ></back-id-tutorial>
       <back-id-camera
@@ -53,6 +54,7 @@
       <selfie-tutorial
         *ngSwitchCase=5
         [sdk]="sdk"
+        [token]="token"
         [handleSuccess]="nextStep"
       ></selfie-tutorial>
       <selfie-camera
@@ -69,6 +71,7 @@
         *ngSwitchCase=7
         [sdk]="sdk"
         [token]="token"
+        [customImagesSrc]="customImagesSrc"
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
         [showLegalModal]=true

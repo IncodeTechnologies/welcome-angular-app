@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   ip;
   deviceType = "WEBAPP";
   fingerPrint;
+  customImagesSrc;
+  incodeConnectingImageSrc: "https://cdn2.unrealengine.com/15br-theflash-screenshot-newsheader-1920x1080-0e77cc2ff454.jpg";
 
   theme = {
     mainButton: {
@@ -46,54 +48,27 @@ export class AppComponent implements OnInit {
   constructor(private ref: ChangeDetectorRef) {}
 
   async ngOnInit() {
+    this.customImagesSrc = {
+      incodeConnectingImageSrc: ""
+    };
     this.sdk = await OnBoarding.create({
       apiKey: this.apiKey,
       apiURL: this.apiURL,
       encrypt: true,
       theme: this.theme,
       tokboxApiKey: this.tokboxApiKey,
+      lang: "es",
+      translations: {
+        support: {
+          queuePlace: "Tienes el <1>{{index}}</1> lugar en la fila",
+        },
+      },
     });
     await this.sdk.warmup();
     const _token = await this.createSession().then((token) => token);
     this.token = _token;
 
     await this.sdk.publishKeys(this.token.token);
-
-    /*await this.sdk.mock({
-      token: this.token.token,
-      interviewId: "602ffb95b3a8a3001204eb54",
-    });*/
-
-    this.ip = await fetch("https://api.ipify.org").then((response) =>
-      response.text()
-    );
-
-    this.fingerPrint = await FingerprintJS.load({
-      token: this.fingerPrintToken,
-    }).then((fp) => fp.get());
-
-    console.log(this.fingerPrint);
-    console.log(this.ip);
-
-    await this.sdk.postFingerPrint({
-      hash: this.fingerPrint.visitorId,
-      ip: this.ip,
-      deviceType: this.deviceType,
-      data: JSON.stringify(this.fingerPrint),
-      token: this.token.token,
-    });
-
-    await this.getCurrentPosition().then(async (pos) => {
-      console.log(pos);
-      await this.sdk.addGeolocation({
-        token: this.token,
-        longitude: pos["coords"].longitude,
-        latitude: pos["coords"].latitude,
-      });
-    });
-
-    const res = await this.sdk.fetchProcessingStatus({ token: this.token });
-    console.log(res);
   }
 
   getCurrentPosition() {
