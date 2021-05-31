@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     this.customImagesSrc = {
-      incodeConnectingImageSrc: ""
+      incodeConnectingImageSrc: "",
     };
     this.sdk = await OnBoarding.create({
       apiKey: this.apiKey,
@@ -127,5 +127,13 @@ export class AppComponent implements OnInit {
     if (eventType === "successCapture") {
       this.nextStep();
     }
+  };
+
+  handleClose = (ev) => {
+    const { close } = ev.detail;
+
+    setTimeout(() => {
+      close();
+    }, 600000);
   };
 }

@@ -75,7 +75,8 @@
         [permissionMessage]="permissionMessage"
         [permissionBackgroundColor]="backgroundColor"
         [showLegalModal]=true
-        (logger)="handleLog($event)">
+        (logger)="handleLog($event)"
+        (closer)="handleClose($event)">
       </conference-camera>
     </div>
   </body>
