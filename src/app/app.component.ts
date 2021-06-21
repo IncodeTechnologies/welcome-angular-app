@@ -69,6 +69,14 @@ export class AppComponent implements OnInit {
     this.token = _token;
 
     await this.sdk.publishKeys(this.token.token);
+
+    this.getCurrentPosition().then((pos: any) => {
+      this.sdk.addGeolocation({
+        token: this.token,
+        longitude: pos.coords.longitude,
+        latitude: pos.coords.latitude,
+      });
+    });
   }
 
   getCurrentPosition() {
